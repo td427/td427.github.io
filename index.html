@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tyler Davis — market commentary and analysis: macro prints, earnings, and what the underlying data shows.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./portfolio-responsive.css">
+
+
+  <script src="./portfolio-filter.js"></script>
+  <title>Tyler Davis — Market Writing</title>
+  <style>
+    #filterbar [data-filter]:hover { border-color: #4a4a4a !important; color: #d8d8d8; }
+    #filterbar [data-filter][data-on]:hover { border-color: var(--color-accent) !important; color: var(--color-accent); }
+    #filterbar > a:hover { color: var(--color-accent); }
+    #indextoggle:hover { background: rgba(224,64,251,0.12); }
+    #index a:hover { background: rgba(224,64,251,0.05); }
+    [data-filter], #indextoggle { transition: color .12s, border-color .12s, background .12s; }
+    :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    img { max-width: 100%; }
+    :root {
+      --color-bg: #f7f4ef; --color-text: #0d0d0d; --color-surface: #ffffff;
+      --color-accent: #E040FB; --color-accent-300: #a3138f; --color-accent-900: #fdf6ff;
+      --color-divider: #d4cfc6; --color-neutral-500: #6b6b6b; --color-ink: #0d0d0d;
+      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 18px;
+      --space-6: 32px; --space-8: 56px; --radius-md: 2px;
+    }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text);
+           font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    a { color: var(--color-accent-300); text-decoration: none; border-bottom: 1px solid rgba(224,64,251,0.35); }
+    a:hover { color: var(--color-accent); }
+    ::selection { background: rgba(224,64,251,0.22); }
+  </style>
+</head>
+<body>
+<div style="background:var(--color-bg);color:var(--color-text);min-height:100vh">
+
+  <header id="top" style="background:var(--color-ink);color:#f7f4ef;border-bottom:2px solid var(--color-ink);display:grid;grid-template-columns:1fr auto;align-items:end;gap:var(--space-4);padding:var(--space-8) max(var(--space-6), calc((100% - 1180px) / 2 + var(--space-6)))">
+    <div>
+      <p style="margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--color-accent)">Market Commentary &amp; Analysis</p>
+      <h1 style="margin:0;font-size:clamp(44px,6vw,72px);font-weight:900;line-height:1;letter-spacing:-0.02em">Tyler Davis</h1>
+      <p style="margin:var(--space-4) 0 0;max-width:56ch;font-size:15px;line-height:1.65;color:#b8b8b8;text-wrap:pretty">Weekly commentary on macro prints, earnings, and what the underlying data shows once you dig into it. Every chart here is my own, built from public sources.</p>
+    </div>
+    <div style="text-align:right;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.9;color:#8d8d8d;letter-spacing:0.04em">
+      <div>Series 86 · 87 · 63 · SIE</div>
+    </div>
+  </header>
+
+  <div id="filterbar" style="position:sticky;top:0;z-index:50;background:var(--color-ink);border-bottom:1px solid #262626;padding:var(--space-3) max(var(--space-6), calc((100% - 1180px) / 2 + var(--space-6)));display:flex;align-items:center;gap:var(--space-4)">
+    <a href="#top" style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#f7f4ef;border:0;text-decoration:none">TD ↑</a>
+    <div class="chiprow" style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none">
+        <button type="button" data-filter="all" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid var(--color-accent);color:var(--color-accent);background:rgba(224,64,251,0.12)">All</button>
+        <button type="button" data-filter="macro" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Macro</button>
+        <button type="button" data-filter="consumer" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Consumer</button>
+        <button type="button" data-filter="labor" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Labor</button>
+        <button type="button" data-filter="capex" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Capex / AI</button>
+        <button type="button" data-filter="earnings" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Earnings</button>
+        <button type="button" data-filter="smallcap" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Small / Mid</button>
+        <button type="button" data-filter="energy" style="appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 11px;border-radius:2px;border:1px solid #2e2e2e;color:#9a9a9a;background:transparent">Energy</button>
+    </div>
+    <button type="button" id="indextoggle" style="flex:none;appearance:none;cursor:pointer;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;padding:6px 12px;border-radius:2px;border:1px solid var(--color-accent);color:var(--color-accent);background:transparent">Index</button>
+  </div>
+
+  <section id="index" style="display:none;max-width:1180px;margin:0 auto;padding:var(--space-6) var(--space-6) 0">
+    <p style="margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8279">Index — all pieces, newest first</p>
+    <div style="display:flex;flex-direction:column">
+        <a href="#p44" data-topics="capex earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">01</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">September 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">When the chips are down...</span></a>
+        <a href="#p45" data-topics="energy macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">02</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">September 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Oy, a crude summer indeed (cue T Swift song).</span></a>
+        <a href="#p46" data-topics="labor macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">03</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">September 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">August NFP beat big. One fading sector deserves a closer look first.</span></a>
+        <a href="#p47" data-topics="macro capex" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">04</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">September 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">A lot of (yield) curve appeal lately..</span></a>
+        <a href="#p1" data-topics="labor capex" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">05</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Does exposure to AI track with which jobs are shrinking?</span></a>
+        <a href="#p2" data-topics="capex earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">06</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Wafer it...</span></a>
+        <a href="#p3" data-topics="consumer" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">07</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Holler for a dollar.. err, two dollars, I guess.</span></a>
+        <a href="#p4" data-topics="consumer macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">08</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Putting the (shopping) cart before the horse.</span></a>
+        <a href="#p5" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">09</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Some fuel for thought..</span></a>
+        <a href="#p6" data-topics="earnings smallcap" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">10</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Grading on a steeper curve these days..</span></a>
+        <a href="#p7" data-topics="labor macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">11</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">A bit of a miss-fire this morning..</span></a>
+        <a href="#p8" data-topics="earnings capex" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">12</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">August 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">This earnings season, Alphabet beat and got punished.</span></a>
+        <a href="#p9" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">13</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Three's a crowd.</span></a>
+        <a href="#p10" data-topics="consumer macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">14</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">It's plane to see here..</span></a>
+        <a href="#p11" data-topics="capex earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">15</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">As easy as ABC... sorta.</span></a>
+        <a href="#p12" data-topics="capex energy" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">16</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">A real power move...</span></a>
+        <a href="#p13" data-topics="consumer energy" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">17</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">A fuel's errand, again.</span></a>
+        <a href="#p14" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">18</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">A Cinderella print? Perhaps.</span></a>
+        <a href="#p15" data-topics="capex earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">19</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Spotify, or a spotty comparison?</span></a>
+        <a href="#p16" data-topics="energy macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">20</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Why you gotta be so crude?</span></a>
+        <a href="#p17" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">21</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">No dovetailing here...</span></a>
+        <a href="#p18" data-topics="earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">22</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">What do Beanie Babies and this valuation gap have in common?</span></a>
+        <a href="#p19" data-topics="labor" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">23</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">July 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Soft serve, slow melt..</span></a>
+        <a href="#p20" data-topics="earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">24</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Does a $1B tariff bill tell you much about a company's next-quarter margin? Eh, less than expected.</span></a>
+        <a href="#p21" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">25</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Core PCE: +0.3% MoM, as expected.</span></a>
+        <a href="#p22" data-topics="capex earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">26</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">A fab idea, in theory...</span></a>
+        <a href="#p23" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">27</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Keep it real? Fo sho.</span></a>
+        <a href="#p24" data-topics="macro consumer" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">28</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Rate cuts were supposed to revive housing. So why hasn’t it shown up?</span></a>
+        <a href="#p25" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">29</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Wishy-warshy? That's not what that was.</span></a>
+        <a href="#p26" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">30</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">What happens to equity valuations when the force that suppressed borrowing costs for 15 years starts to fade?</span></a>
+        <a href="#p27" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">31</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Haul clear?</span></a>
+        <a href="#p28" data-topics="macro consumer" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">32</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">The pass-through passed through.</span></a>
+        <a href="#p29" data-topics="earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">33</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">The managed care recovery trade has a deductible of about nine months.</span></a>
+        <a href="#p30" data-topics="labor" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">34</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Hire than we thought..</span></a>
+        <a href="#p31" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">35</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Manufacturing demand looked a lot worse last spring.</span></a>
+        <a href="#p32" data-topics="earnings" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">36</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">June 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Net gains, gross concerns.</span></a>
+        <a href="#p33" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">37</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">The goods get good again.</span></a>
+        <a href="#p34" data-topics="labor" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">38</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">At 4.3%, headline unemployment looks okay... until you break it down by state.</span></a>
+        <a href="#p35" data-topics="energy macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">39</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Fuel for thought..</span></a>
+        <a href="#p36" data-topics="macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">40</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">No dove, no love.</span></a>
+        <a href="#p37" data-topics="capex" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">41</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Gotta let it burn (cue Usher song).</span></a>
+        <a href="#p38" data-topics="consumer energy" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">42</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Window dressing?</span></a>
+        <a href="#p39" data-topics="macro consumer" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">43</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Aisle just leave this here.</span></a>
+        <a href="#p40" data-topics="capex" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">44</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">All yield, no field.</span></a>
+        <a href="#p41" data-topics="labor" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">45</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Feel the beat.</span></a>
+        <a href="#p42" data-topics="earnings consumer" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">46</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">Q1 earnings have been a reminder that "good" doesn't always move the needle.</span></a>
+        <a href="#p43" data-topics="smallcap macro" style="display:grid;grid-template-columns:34px 92px 1fr;gap:var(--space-3);align-items:baseline;padding:var(--space-2) 0;border-bottom:1px solid rgba(212,207,198,0.5);color:var(--color-text);border-top:0;border-left:0;border-right:0;text-decoration:none"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--color-accent-300)">47</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:#8a8279">May 2026</span><span style="font-size:14px;line-height:1.5;text-wrap:pretty">The small cap trade is working, but the balance sheet hasn't changed.</span></a>
+    </div>
+  </section>
+
+  <main id="posts" style="max-width:1180px;margin:0 auto;padding:0 var(--space-6);display:flex;flex-direction:column">
+
+    <article id="p44" data-topics="capex earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">01</span><span>September 2026</span><span style="color:#b5aea4">Capex / AI &nbsp;·&nbsp; Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">When the chips are down...</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">AI safety concerns took over the headlines this weekend, with several industry leaders calling for a slower pace of frontier model development. AI-linked stocks fell this morning, but not all of them, and not evenly. (Oil + Treasury yields were moving markets too.)</p>
+          <p style="margin:0">Scoring 15 AI-related stocks on how exposed they are to spending on chips, memory, and data centers, then plotting that against Monday’s move (charted below), shows an interesting pattern in this group:</p>
+          <p style="margin:0">➡️ Memory and compute names took the biggest hits</p>
+          <p style="margin:0">➡️ The app software names in the chart mostly rose</p>
+          <p style="margin:0">➡️ The moves track closely with the capex-exposure scores</p>
+          <p style="margin:0">That doesn’t mean investors expect the buildout to slow. But it suggests they might be weighing the pace of spending more than AI’s value as a whole.. a different question with different implications.</p>
+          <p style="margin:0">Meta stands out: shares up despite a relatively high exposure score. However, its business mix differs from the cloud providers’, though that alone doesn’t explain the move.</p>
+          <p style="margin:0">Still intraday for the U.S. names, so we’ll see if it holds by the close.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/ai_capex_exposure_scatter.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p45" data-topics="energy macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">02</span><span>September 2026</span><span style="color:#b5aea4">Energy / Commodities &nbsp;·&nbsp; Macro</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Oy, a crude summer indeed (cue T Swift song).</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Brent crude oil’s back around $100 on renewed geopolitical risk, and WTI is up ~50% YoY. Friday’s CPI print will mostly miss the latest jump, as that release covers August, before this September surge. The fuller read lands October 14, covering September.</p>
+          <p style="margin:0">As I’ve charted below, looking at post-2021 data, oil’s pass-through into CPI energy peaks at a one-month lag. The straight-line fit maps a 10-pt rise in oil’s YoY growth to a ~3.2-pts rise in CPI energy’s YoY growth a month later.</p>
+          <p style="margin:0">That’s a rough average though, not a guarantee. A curved read of the same data holds up better for a move this size. And it’s not just a nicer looking line, it’s been tested against outcomes it didn’t see. The result says the hit is bigger than a straight average would suggest. If September holds around here, the straight-line math puts October’s energy print near +20% YoY. The curve says closer to +23% YoY. Friday’s August release, reflecting calmer prices, should land lower to ~12% to 16% YoY.</p>
+          <p style="margin:0">Energy is about 6% of the CPI basket. Applying that weight, a +23% YoY energy print adds ~1.5 pts to headline CPI. Meaningful, but not the whole story.</p>
+          <p style="margin:0">Net net: the real read on this shock is still 5 weeks out.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/oil_cpi_lag.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p46" data-topics="labor macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">03</span><span>September 2026</span><span style="color:#b5aea4">Labor Market &nbsp;·&nbsp; Macro</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">August NFP beat big. One fading sector deserves a closer look first.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">August NFP: payrolls up 162K, blowing past the ~53K expected, while unemployment held at 4.1%. Wages grew 0.3% on the month, right in line. Gains showed up across several sectors.. food service, local government education, and manufacturing all contributed, while construction changed little.</p>
+          <p style="margin:0">Healthcare didn’t keep pace, though. As I’ve charted below, it’s been the labor market’s steadiest source of jobs for years, averaging 40K+ a month through good stretches and bad. That’s cooled sharply since spring, and August’s reading — about 15K on a three-month basis — is the weakest it’s been since June ’25.</p>
+          <p style="margin:0">Some of this may trace back to real shifts in health coverage. Medicaid enrollment has been declining for the better part of three years and continues to fall, and enrollment in ACA marketplace plans has also dropped sharply this year following the expiration of enhanced subsidies.</p>
+          <p style="margin:0">Healthcare has done more than a third of the labor market’s work this year.</p>
+          <p style="margin:0">For the Fed, a beat this size leans hawkish heading into the September 16 decision, but a headline number that owes this much to one fading sector deserves a closer look before it settles the debate.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/healthcare_sector_nfp.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p47" data-topics="macro capex" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">04</span><span>September 2026</span><span style="color:#b5aea4">Macro &nbsp;·&nbsp; Capex / AI</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">A lot of (yield) curve appeal lately..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Global bond yields hit multi-decade highs this week, on the usual suspects: deficits, oil, Fed uncertainty, etc. Now add Big Tech to the mix.. hyperscalers have issued upward of $220B in bonds this year to fund AI buildouts, a genuinely new source of supply competing for the same pool of buyers. How much of that is actually moving yields vs. the other factors is hard to isolate.</p>
+          <p style="margin:0">That pressure is already reaching housing. As I’ve charted below, 21.2% of outstanding mortgages now sit above 6%, just edging out the share below 3%, a crossover not seen in five years. More tellingly, 51.5% are still at 4% or below—a big reason housing turnover has stayed low. More than half of mortgage holders have a far better rate than they’d get today, so they have little reason to sell.</p>
+          <p style="margin:0">The more interesting piece is new borrowing costs. Plotting weekly mortgage rates against the 10-year since ’23 shows that the premium borrowers pay has shrunk substantially, from ~2.85 pts in ’23 to under 2 now.</p>
+          <p style="margin:0">That compression looks driven mostly by mortgage rates easing off their ’23 highs, not Treasurys outrunning them, though the relationship between the two has gotten noisier over that period. Could be lender competition. Easing prepayment risk likely plays a role too. Either way, that extra cost has been shrinking even as this week’s yields grab the headlines.</p>
+          <p style="margin:0">Net net: the pressure right now is coming from the Treasury yield itself. The premium that lenders add on top of it has actually been easing.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/mortgage_rates_treasury.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p1" data-topics="labor capex" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">05</span><span>August 2026</span><span style="color:#b5aea4">Labor Market &nbsp;·&nbsp; Capex / AI</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Does exposure to AI track with which jobs are shrinking?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Loosely, yes... with a couple of exceptions. BLS just published a new dataset that gets into it (see my chart below). They classified every detailed occupation by how exposed it is to AI using three theoretical exposure measures, plus observed Claude and Copilot usage, mapped to occupational tasks:</p>
+          <p style="margin:0">→ Nearly a third of the workforce — more than 50M people, by my count — falls into the top "very high" exposure tier.</p>
+          <p style="margin:0">→ Of that group, 40% work in occupations where employment is projected to shrink through 2035 vs. 16% in the lowest exposure tier. That's a real gap.</p>
+          <p style="margin:0">→ "Moderate" exposure actually has the smallest shrinking share of all four tiers (not the lowest-exposure tier), so exposure alone isn't setting the pattern.</p>
+          <p style="margin:0">→ Within "very high" itself, the biggest occupations — retail sales, customer service, office clerks — are flat or shrinking, while software developers, another large occupation in that bracket, keep growing. One category, very different outcomes.</p>
+          <p style="margin:0">If you're sizing up which roles are actually vulnerable, look past the exposure number to whether the job is one task done over and over, or a mix that keeps changing.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/exposure_growth_scatter.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p2" data-topics="capex earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">06</span><span>August 2026</span><span style="color:#b5aea4">Capex / AI &nbsp;·&nbsp; Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Wafer it...</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Nvidia shares jumping today following last night's print, with a surprise '28 growth forecast doing a lot of the work.</p>
+          <p style="margin:0">One number worth pulling out: Nvidia's supply and capacity commitments, mostly for memory and manufacturing, stood at $95B as of January and have climbed to $279B now (supply secured for years ahead, not cash spent yet).</p>
+          <p style="margin:0">That lines up with what a few of Nvidia's customers have said. Amazon raised its '26 spending plans this year and pointed to memory costs directly as the reason. Microsoft and Meta raised their plans too, citing higher component costs, particularly memory, as a driver.</p>
+          <p style="margin:0">As I've charted below, what these three have disclosed adds up to around $55B, ~10% of their combined budgets — likely a floor, since it only counts what's been said publicly. Some of that spending also goes toward buildings and power, so narrowing to just hardware pushes the estimate closer to ~17% (based on one company's disclosed split, applied across all three).</p>
+          <p style="margin:0">On the other side of that spending, Micron's gross margin jumped from 39% to 85% over roughly the same year.</p>
+          <p style="margin:0">Memory isn't just a Nvidia cost. It's becoming a real line item for the companies buying its chips too.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/nvda_earnings_aug26.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p3" data-topics="consumer" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">07</span><span>August 2026</span><span style="color:#b5aea4">Consumer</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Holler for a dollar.. err, two dollars, I guess.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">💵 Dollar General and Dollar Tree compete for many of the same value-conscious shoppers. DG's traffic turned positive in F2Q25. DLTR's turned negative the following quarter and has stayed negative since. As I've charted below, their traffic spread went from -2.8pp in F1Q25 to +3.8pp by F4Q25, still sitting at +2.4pp in F1Q26.</p>
+          <p style="margin:0">It's easy to chalk this up to trade-down, so here's the test: did anything else change at the same moment this divergence started? I checked whether gas prices, consumer sentiment, food-at-home inflation, egg prices, mortgage rates, SNAP disruption, Five Below / Walmart results, or DG's remodel push actually moved when this crossover did.</p>
+          <p style="margin:0">Gas, eggs, and rates all shifted the opposite way you'd expect if the consumer were getting squeezed, while the SNAP disruption hit a quarter too late to explain it. Five Below and Walmart also moved on their own separate timelines.</p>
+          <p style="margin:0">What lines up better? In-store price checks dating to March 2025 show existing $1.25 items retagged to $1.75, building toward what DLTR's own CEO called the "peak distraction" of its restickering effort in August-September, right when its traffic turned.</p>
+          <p style="margin:0">That matters beyond these two names.. it suggests the stressed consumer story may be too blunt. A value-seeking consumer doesn't have to mean uniformly weaker traffic. DG's traffic grew even as Walmart's latest U.S. comp was also driven by transactions. Where consumers shop for value may matter as much as whether they're trading down.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">DLTR's traffic hasn't turned positive yet, and management called Q2 a tough comparison. Both DG and DLTR report Thursday — that's the print that actually tests this.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 1180;border:1px solid var(--color-divider);background:#fff"><img src="charts/bet_your_bottom_dollar.webp" width="1180" height="1180" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p4" data-topics="consumer macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">08</span><span>August 2026</span><span style="color:#b5aea4">Consumer &nbsp;·&nbsp; Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Putting the (shopping) cart before the horse.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🛒 Retail sales dropped 0.6% in July, against consensus for +0.1%. Ex autos and gas, sales declined 0.2% vs. an expected +0.3%, and control group fell 0.4% against +0.3% consensus.</p>
+          <p style="margin:0">Nonstore (-2.2% MoM) and autos (-1.8% MoM) drove nearly all of it. Amazon moved Prime Day to June this year, only the second time since 2015. As I've charted below, the first time, in 2021, nonstore jumped 2.6% in June and gave back 5.6% in July, a drop well outside the usual range after a July Prime Day. This year: +0.9% in June, -2.2% in July. It’s one precedent, so a pattern rather than a rule, but a fairly clean one.</p>
+          <p style="margin:0">Autos have a similar wrinkle: Cox Automotive points to fleet sales pulling back after a June surge of over 10%.. a similar shape to nonstore’s, just a different reason.</p>
+          <p style="margin:0">A heat wave and World Cup-related pull-forward have also come up as factors. The category mix doesn’t look like broad demand pulling back, though: restaurants rose 0.5% and clothing up 1.9% in July. Sporting goods was up in June, plausibly some World Cup spillover, but there isn’t enough in the data to isolate either effect cleanly.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">Nonstore and autos drove nearly all of July’s miss, both with plausible calendar-timing explanations rather than straightforward demand weakness. Worth checking nonstore against August’s print (out mid-Sept) since that’s when 2021’s rebound showed up.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 1200;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-4.webp" width="1200" height="1200" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p5" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">09</span><span>August 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Some fuel for thought..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">July CPI rose 0.1% MoM, in line with consensus, with YoY easing to 3.4% from 3.5%. Core CPI rose 0.2% MoM, also in line, with core YoY at 2.5%, down from 2.6%.</p>
+          <p style="margin:0">Digging deeper, gasoline fell 2.9% in the month, even as oil jumped sharply in early July after the Iran ceasefire unraveled. That's probably the most surprising number in the report.</p>
+          <p style="margin:0">It's also a good reminder of what CPI actually measures. EIA publishes retail gas prices weekly and publicly, well ahead of the monthly CPI release. As I've charted below, run that against monthly gasoline CPI back to 2015, and the relationship holds up well enough (historically) to trust the direction and rough size of the move. Heading into today, that model pointed to a decline of ~2.3%. The actual print came in at -2.9%.. in the same neighborhood.</p>
+          <p style="margin:0">The reason is timing. Gasoline CPI reflects average prices over the month, not a snapshot. July's average retail price still sat below June's, even with prices climbing toward the end of the month. A late-month spike barely moves a number built on the whole month.</p>
+          <p style="margin:0">That's also why August is worth watching early. The same model, run on the first two weeks of August's prices, already points toward a swing back around +2%, though that'll firm up as more of August's EIA data comes in.</p>
+          <p style="margin:0">As for the Fed, this print likely does little to strengthen the case for a September hike.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">A quiet, in-line report on the surface, but gasoline's the line item to know. Prices were already climbing again as July ended, and that same relationship points toward a much hotter gasoline print next month.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/july_cpi_pump_fake.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p6" data-topics="earnings smallcap" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">10</span><span>August 2026</span><span style="color:#b5aea4">Earnings &nbsp;·&nbsp; Small &amp; Mid Cap</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Grading on a steeper curve these days..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">A few mid-cap software and ad-tech names topped EPS estimates this month, and every one of them still fell double digits within 24 hours. Elevated expectations explain part of it. They don't explain why the reaction has become this consistent.</p>
+          <p style="margin:0">As I've charted below, going back to '20 across 20 mid-cap growth names, modest EPS beats — 0 to 15% above consensus, the kind that used to be a non-event or a small pop — averaged +2.2% from '20 through '24. Since the start of '25, that same bucket averages -2.9%. Just over half get sold now, up from under half before, and the shift holds well beyond any single earnings week.</p>
+          <p style="margin:0">Larger surprises moved the other direction. Results 15%+ above consensus are still getting rewarded and, on average, the payoff gets larger as the surprise gets bigger. Fundamentals still matter, of course.. the bar just sits higher than it used to, and clearing it decisively pays off more than it did a few years ago.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">This earnings season, the size of the beat is carrying more weight than the beat itself.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 1180;border:1px solid var(--color-divider);background:#fff"><img src="charts/beat_switch_linkedin.webp" width="1180" height="1180" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p7" data-topics="labor macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">11</span><span>August 2026</span><span style="color:#b5aea4">Labor Market &nbsp;·&nbsp; Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">A bit of a miss-fire this morning..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">July payrolls fell 23K, against consensus for a gain of 80K. Unemployment ticked down to 4.1% from 4.2%, but that largely reflected people leaving the labor force (participation fell to 61.4%) rather than stronger hiring. Wage growth came in soft too, up just 0.1% MoM against a 0.3% consensus.</p>
+          <p style="margin:0">A big miss on its own. But the more useful question is how big it was relative to what the labor market actually needs to hold steady. As I've charted below, using a breakeven framework, that bar has generally been in the high 50s to high 60s per month, and in July, with population growth running somewhat faster, it moved to 68K. July didn't just miss.. it missed by 91K. That's before factoring in 103K in downward revisions to May and June, which made the underlying trend even weaker than the headline suggested.</p>
+          <p style="margin:0">That gap deserves some context. This isn't a claim that July repeats, and it assumes participation holds where it is, which it hasn't been doing lately. If more people keep leaving the labor force instead, the unemployment rate would likely rise more slowly than this simple exercise suggests. But as a rough sense of scale: a gap that size, repeated over several months, is worth somewhere in the neighborhood of two to three tenths on the unemployment rate. Not a forecast, just a ruler.</p>
+          <p style="margin:0">Markets focused on the weakness. Futures rose, yields fell, and odds of a September rate hike fell sharply — from ~57% to ~44% — as the case for holding steady built.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">A real miss on both the headline + the bar set for it, and a gap that's bigger than it looks at first glance.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 1180;border:1px solid var(--color-divider);background:#fff"><img src="charts/breakeven_forward_chart_linkedin.webp" width="1180" height="1180" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p8" data-topics="earnings capex" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">12</span><span>August 2026</span><span style="color:#b5aea4">Earnings &nbsp;·&nbsp; Capex / AI</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">This earnings season, Alphabet beat and got punished.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Microsoft beat a week later and had its best day since '08.</p>
+          <p style="margin:0">Alphabet raised '26 capex guidance by ~$15–$25B and swung to negative FCF. Microsoft left its capex outlook essentially unchanged, while Azure’s acceleration and strong bookings convinced investors the spending was already paying off.</p>
+          <p style="margin:0">As I've charted below, across Mag 7, capex growth and capex-to-revenue show little relationship to how these seven stocks have traded since the group’s correlation broke down last summer. Operating margin trend has tracked returns better: names expanding margin YoY — Alphabet, Amazon, Apple — have generally outperformed, while Meta and Tesla, the two with margin compression, have lagged.</p>
+          <p style="margin:0">One caveat: Meta’s margin decline largely reflects one-off legal/severance charges rather than a slowing core business. Nvidia also expanded margin sharply, but its asset-light model makes capex far less central to the investment debate than for the hyperscalers.</p>
+          <p style="margin:0">Capex guidance has dominated same-day earnings reactions. Beyond earnings day, operating margin trend has tracked returns more closely. The next print is a chance to see if that relationship holds once the capex headline fades.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 1180;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-8.webp" width="1180" height="1180" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p9" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">13</span><span>July 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Three's a crowd.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">The FOMC kept its statement short today, 115 words, almost identical to June’s 114, and roughly half the length of what Powell’s Fed put out in March and April, near 240 words each. The format has held two meetings running.</p>
+          <p style="margin:0">What didn’t hold was the vote. Three officials dissented in favor of a hike, vs. a unanimous June. April isn’t a clean comparison: only Miran dissented on the rate itself; the other three of that 8-4 vote agreed with the hold and objected to the statement’s wording instead.</p>
+          <p style="margin:0">As I've charted below, the language held close to June’s too: hedge phrases like balance of risks remained absent, tone still declarative, though resolve language eased a touch. This also wasn’t a dot plot meeting, so less new information was on the table than a typical hawkish surprise carries.</p>
+          <p style="margin:0">Markets were already sliding before the decision on an overnight oil spike tied to an Iran attack. They fell further after... the Dow’s worst day since April 2025 and the 30-year yield at its highest since 2007, likely more about the vote and September repricing than the statement itself.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">Brevity has held for two meetings, unity hasn’t. If September’s statement stays this short even as the vote splits again, that combination is the clearest sign this is Warsh’s new format.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/mosaic_three_panel.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p10" data-topics="consumer macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">14</span><span>July 2026</span><span style="color:#b5aea4">Consumer &nbsp;·&nbsp; Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">It's plane to see here..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">✈️ Airfares are up ~26% YoY, and one explanation getting attention is market concentration. A handful of airlines now account for most domestic capacity, potentially giving carriers more pricing power than fuel costs and capacity alone would suggest. That's likely part of the story.</p>
+          <p style="margin:0">I built a simple model (charted below) using fuel prices and industry-wide capacity going back to 2000, then tested it on this year without letting it see the answer in advance. The model leaves out demand, labor costs, and competitive dynamics, so any persistent gap is where those other forces would have to show up. January landed almost exactly where the model expected.</p>
+          <p style="margin:0">February and March didn't.. fares ran 7 and 6 pts hotter than predicted. A miss that large has occurred in roughly one out of every six months since 2000. On the Transportation Dept's average round-trip fare of $522, February's gap works out to ~$38 the model can't explain.</p>
+          <p style="margin:0">Not unprecedented. The 2022-2023 reopening saw gaps 3-4x as large — the 2008 oil spike, ~2x this size. Real, just smaller than those episodes.</p>
+          <p style="margin:0">Part of it could reflect shifts in the mix of fares consumers are purchasing. Part of it looks like pricing power.</p>
+          <p style="margin:0">Spring capacity data arrives within weeks. If the gap shrinks back toward zero, fuel and capacity were doing more of the work than they first appeared to. If it holds near 6-7 pts, that's a sign something more structural is keeping fares elevated. Worth watching heading into peak summer travel.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/fare_game_chart_linkedin.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p11" data-topics="capex earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">15</span><span>July 2026</span><span style="color:#b5aea4">Capex / AI &nbsp;·&nbsp; Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">As easy as ABC... sorta.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Alphabet crossed a threshold this quarter that Amazon crossed first, with a very different result—and it may be more than just market noise.</p>
+          <p style="margin:0">As charted below, Alphabet’s operating cash flow covered capex by 1.2x–2.0x for five straight quarters. This quarter it dropped to 0.87x, and FCF turned negative for the first time in the company’s public reporting history. The stock finished down ~7% today, underperforming the S&amp;P 500 by about 5.5 ppts.</p>
+          <p style="margin:0">Amazon’s coverage fell further, to 0.59x, back in 1Q26, when FCF was negative for the second straight quarter. Relative to the broader market, its stock was essentially flat that day.</p>
+          <p style="margin:0">Both companies argued the spending reflected committed customer demand, not speculative buildout, and both had similar noise from mark-to-market gains on equity stakes.</p>
+          <p style="margin:0">One difference stands out: Amazon named specific customers and contract sizes behind its backlog. Alphabet reported a larger aggregate backlog with less detail on those customer commitments. Whether that explains the gap in market reaction is still an open question.</p>
+          <p style="margin:0">Microsoft hasn’t crossed this line once in six quarters. Worth watching next week.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 1200;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-11.webp" width="1200" height="1200" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p12" data-topics="capex energy" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">16</span><span>July 2026</span><span style="color:#b5aea4">Capex / AI &nbsp;·&nbsp; Energy</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">A real power move...</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Reshoring has been the standard explanation for elevated manufacturing construction spending. For a while, the data backed it. However, it no longer appears to explain the full story.</p>
+          <p style="margin:0">Manufacturing construction spending has fallen ~30% from its late-2024 peak, the sharpest pullback in more than a decade. Data center construction — the buildings themselves — is up 58% over the same period, while power construction has remained comparatively flat.</p>
+          <p style="margin:0">Aggregate capex hasn't gone away.. it's simply changed shape.</p>
+          <p style="margin:0">For context, the major hyperscalers are guiding to more than $700B of combined capex in 2026. My chart below captures only physical construction — a relatively small slice of that spending — and excludes chips, servers, and networking equipment.</p>
+          <p style="margin:0">Why power construction hasn't kept pace isn't entirely clear. Part of the answer may simply be timing: utility-scale generation projects take much longer to build than data centers, and many hyperscaler-backed projects aren't expected online until 2028 or later.</p>
+          <p style="margin:0">The downstream beneficiaries look different too: electrical contractors and grid equipment suppliers over traditional industrial builders. One implication to watch is whether construction employment grows faster in data-center hubs like Northern Virginia and Phoenix than in the U.S. overall.</p>
+          <p style="margin:0">A key caveat: this shift depends on hyperscaler investment remaining elevated. Any meaningful pullback in their capex plans would likely show up here first.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 1180;border:1px solid var(--color-divider);background:#fff"><img src="charts/watt_a_shift_square.webp" width="1180" height="1180" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p13" data-topics="consumer energy" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">17</span><span>July 2026</span><span style="color:#b5aea4">Consumer &nbsp;·&nbsp; Energy</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">A fuel's errand, again.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">⛽ June retail sales +0.2%, in line with consensus, though well off May's upwardly revised +1.0%.</p>
+          <p style="margin:0">As charted below, the headline slowdown has a culprit: gasoline. Gas stations subtracted ~0.4 ppt from June's print, the largest one-month drag in the past year, as pump prices fell back below $4/gal following the Iran ceasefire. That's the mirror image of March, when gasoline contributed ~1 ppt to that month's 1.7% headline gain during the height of the conflict.</p>
+          <p style="margin:0">Strip gasoline out and the picture looks steadier, with ex-gasoline retail sales contributing ~0.7 ppt to headline growth in June.</p>
+          <p style="margin:0">What's more interesting is how March's spike actually compares. It felt unprecedented in real time. It wasn't. The record still belongs to March 2022, during the Russia-Ukraine shock, which produced the largest monthly gasoline contribution to headline retail sales since 1992 (charted below). Where the Iran episode stands out is duration. Six months in, its cumulative contribution to the headline is already ~3x what 2022 added over that full calendar year, a sign this gasoline shock has been slower to unwind.</p>
+          <p style="margin:0">Reports this week suggest the ceasefire may already be fraying, with oil prices climbing again. If that holds, next month's headline could strengthen even if underlying spending barely changes. That's why the ex-gasoline trend remains the better gauge of consumer demand.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:823px;aspect-ratio:1180 / 1290;border:1px solid var(--color-divider);background:#fff"><img src="charts/gas_decomp_square_final.webp" width="1180" height="1290" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p14" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">18</span><span>July 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">A Cinderella print? Perhaps.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Headline CPI: +3.5% YoY against a +3.8% consensus, the largest monthly decline since April 2020. Core: +2.6% YoY against a +2.9% consensus. A clean miss to the downside, across every line.</p>
+          <p style="margin:0">Shelter did its part too. It rose just 0.1% on the month, the smallest gain since January 2021, which made this a good opportunity to revisit whether the rent lag relationship is still behaving as expected.</p>
+          <p style="margin:0">The setup: market rents, captured through Zillow's Observed Rent Index, tend to show up in official shelter CPI with a lag, historically landing somewhere in the 12-to-18-month range as leases turn over. A model using a 13-month lag fits the data well over the past decade. The more interesting part is what happened to that fit recently. Through late 2025 and into early 2026, actual shelter inflation ran meaningfully cooler than the model expected, with the gap widening to ~30 bps by February.</p>
+          <p style="margin:0">That gap narrowed quickly from there. April, May, and now June all landed within a tenth of a point of what the lagged model predicted, including June's print.</p>
+          <p style="margin:0">Here's the part that matters going forward. Because the lag structure means today's shelter print is explained by rents observed over a year ago, the same model points toward what's likely next. Rents already embedded in the data imply shelter CPI drifting toward ~3% YoY by September, a continuation of the cooling trend rather than a plateau.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">If the relationship continues to behave as it has historically, shelter should remain more of a tailwind than a headwind over the next few months.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 1180;border:1px solid var(--color-divider);background:#fff"><img src="charts/shelter_lag_linkedin.webp" width="1180" height="1180" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p15" data-topics="capex earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">19</span><span>July 2026</span><span style="color:#b5aea4">Capex / AI &nbsp;·&nbsp; Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Spotify, or a spotty comparison?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🎧 A common assumption in AI commentary is that consumer monetization just needs time to catch up, the way it eventually did for other freemium products, with Spotify often cited as a reference point.</p>
+          <p style="margin:0">Spotify launched in the US in July 2011. Within about 1.5 years, roughly a quarter of MAUs were paying. That % share climbed to the mid-40s by 2018 and eased toward the high-30s more recently. AI chatbots are about 39 months past ChatGPT's launch, and household paid conversion sits at ~2–3% (different denominator, so treat comparison as directional). At the equivalent point in its life, Spotify was already near its long-run range.</p>
+          <p style="margin:0">Dropbox tracks more closely. Its free tier remained genuinely usable—2GB of real storage with upgrades primarily adding capacity—and conversion crept from &lt;1.4% in 2015 to ~2.5% by 2018, about a decade after launch. That's the range AI is in today.</p>
+          <p style="margin:0">Spotify's ~40% may be the number that needs explaining: a great standalone product paired with a deliberately restrictive early free tier, not a template most freemium businesses follow.</p>
+          <p style="margin:0">The read-through: any assumption of a large consumer-subscription inflection embedded in AI valuations is worth testing. What OpenAI, Anthropic, and Google choose to keep free will likely matter more than time elapsed.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/spot_dbx_paid_linkedin_chart.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p16" data-topics="energy macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">20</span><span>July 2026</span><span style="color:#b5aea4">Energy &nbsp;·&nbsp; Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Why you gotta be so crude?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🛢️ Tracking the 1-day market reaction across 15 distinct Iran-war events since the February 28 opening strikes turns up a clear split between oil and equities (charted below). The episodes span a naval blockade, four separate Hormuz closures, and this week’s “ceasefire is over," among others. Brent’s average absolute move across the sample was 4.5%, without a clear pattern of fading. The April 8 ceasefire alone produced a 13.3% selloff.</p>
+          <p style="margin:0">The S&amp;P’s largest move across all 15 events was 2.5%, and that came on the ceasefire relief rally, not an attack. The index finished essentially flat (+0.04%) after the strike that killed Iran’s supreme leader.</p>
+          <p style="margin:0">One place to look for an explanation is the bond market. 10-year breakeven inflation, the bond market’s inflation gauge, moved an average of just 1.8 bps across these same shocks. It’s not disconnected from oil (corr: 0.72), but the magnitude stayed remarkably small. That’s consistent with investors viewing these as temporary supply disruptions rather than the start of a sustained inflation cycle, and equities appear to be taking a similar cue.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">If these shocks become structural, I’d expect breakevens to tell us before equities do.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 1200;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-16.webp" width="1200" height="1200" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p17" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">21</span><span>July 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">No dovetailing here...</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">June's FOMC minutes generated the third-widest divergence score across the 36 meetings tracked since January 2022 (charted below). Tariff mentions fell while structural framing — language treating inflation as sticking around rather than fading — rose to 46%, its highest reading since December 2022. Only January and December of that year scored higher.</p>
+          <p style="margin:0">Within the minutes, Fed staff identified an inflation risk unrelated to tariffs or energy — "emergent price pressures" they judged could prove persistent. Elsewhere, participants pointed to strong AI investment as a potential new source of input-cost pressures.</p>
+          <p style="margin:0">Participants also expressed differing views on what that means longer term: some see AI investment outpacing productivity gains for now, while others expect productivity to offset those pressures over time, though the timing remains uncertain.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The hawkish case broadens beyond tariffs.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:902px;aspect-ratio:1147 / 1145;border:1px solid var(--color-divider);background:#fff"><img src="charts/warsh_rinse_repeat_square_v3.webp" width="1147" height="1145" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p18" data-topics="earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">22</span><span>July 2026</span><span style="color:#b5aea4">Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">What do Beanie Babies and this valuation gap have in common?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Both from the 90s — only one held its value for 8 years.</p>
+          <p style="margin:0">Some recent commentary treats “stocks yielding less than bonds” as a historically rare warning sign. The longer history tells a different story.</p>
+          <p style="margin:0">Using trailing earnings yield—the measure that provides a consistent long-run history—the negative-spread condition has shown up in roughly 40% of all months since 1953, and nearly half of all months since 1990. It persisted for more than eight years during the dot-com era, long enough to span a full market cycle, gains and drawdowns alike.</p>
+          <p style="margin:0">Today’s reading isn’t unusual in that context either, sitting well within one standard deviation of the post-1990 average.</p>
+          <p style="margin:0">None of this means valuations don’t matter, or that relative valuation measures are unimportant for what happens next. It simply means this particular signal has a much weaker historical base rate than “historically rare” would imply, at least by this measure.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The history suggests a little more nuance is warranted.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 1200;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-18.webp" width="1200" height="1200" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p19" data-topics="labor" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">23</span><span>July 2026</span><span style="color:#b5aea4">Labor Market</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Soft serve, slow melt..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🍦 June NFP: +57K (vs. +115K est.). Unemployment: 4.2% (vs. 4.3% est.). AHE: +0.3% MoM (in line).</p>
+          <p style="margin:0">Household employment fell by 507K, while the labor force shrank by 720K in June. That deterioration helps explain why the unemployment rate fell despite weak payroll growth — and that same decline is what's opening today's gap between the household and payroll surveys.</p>
+          <p style="margin:0">One underlying shift, two symptoms.</p>
+          <p style="margin:0">As I've charted below, the gap between the establishment survey (today's headline) and the household survey (behind the jobless rate) just hit its highest reading in data back to 2000, excluding the pandemic. Not unprecedented. In the last 8 instances where the six-month gap exceeded the 90th percentile of its historical range, 6 preceded a downward benchmark revision the following year, averaging a decrease of 238K vs. a typical 160K drop.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The headline looked firmer than the internals. Taken at face value, this overall leans more toward patience than urgency from the Fed.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1600 / 1600;border:1px solid var(--color-divider);background:#fff"><img src="charts/two_surveys_one_story_square.webp" width="1600" height="1600" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p20" data-topics="earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">24</span><span>June 2026</span><span style="color:#b5aea4">Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Does a $1B tariff bill tell you much about a company's next-quarter margin? Eh, less than expected.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">As charted below, I pulled 2025-26 disclosures across 12 companies to see whether tariff exposure size explains margin damage. The expectation: bigger number, bigger hit. The reality: barely any relationship at all.</p>
+          <p style="margin:0">Look at TNC. Almost no tariff exposure, and margin still fell 330bps, driven largely by causes that had nothing to do with trade policy. Now look at AAPL. Billions in disclosed tariff exposure, and margin still rose 220bps, aided by services mix and pricing power. Exposure size alone can't explain either outcome.</p>
+          <p style="margin:0">What can? Whether management's mitigation was effective. PG's own disclosed bridge shows 210bps of productivity and 50bps of pricing against a 50bps tariff drag. WHR and UAA faced material tariff exposure too, and watched margin erode without enough cushion to offset it.</p>
+          <p style="margin:0">So before assuming a high-exposure name is the riskier one, ask a different question: how credible is management's playbook for absorbing it. Across this sample, that capability lines up with margin outcomes far more closely than the headline number ever did.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:866px;aspect-ratio:1600 / 1662;border:1px solid var(--color-divider);background:#fff"><img src="charts/call_of_duty.webp" width="1600" height="1662" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p21" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">25</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Core PCE: +0.3% MoM, as expected.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Headline PCE: +0.4%, below the +0.5% consensus.</p>
+          <p style="margin:0">While today’s equity reaction is influenced by more than just the inflation data, here’s something worth sitting with alongside the number.</p>
+          <p style="margin:0">Looking back over a decade of these releases, cooler-than-expected core PCE prints are associated with unusually subdued same-day equity moves (charted below). Subdued compared to a hot print, which is what most people would expect. But also subdued compared to a print landing right on consensus, with no surprise at all.</p>
+          <p style="margin:0">Hot prints, meanwhile, are statistically indistinguishable from an in-line release.</p>
+          <p style="margin:0">So the pattern isn’t the standard “bad news hits harder than good news.” It’s narrower: only cooler-than-expected inflation prints stand out, and they stand out by coming with quieter trading. Hotter-than-expected prints just don’t move the needle either way.</p>
+          <p style="margin:0">For positioning into prints like this one, it’s a useful prior. Historically, the bigger surprise hasn’t been the inflation miss itself. It’s how little the equity market tends to do with it.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1184 / 1200;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-21.webp" width="1184" height="1200" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p22" data-topics="capex earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">26</span><span>June 2026</span><span style="color:#b5aea4">Capex / AI &nbsp;·&nbsp; Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">A fab idea, in theory...</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">For years, profit margin dispersion across the major chip names stayed in a fairly tight band, with no single company really running away from the pack. That changed once the AI buildout took hold: the gap between the best and worst margin in the group widened by ~60% and, as I've charted below, it’s held there since.</p>
+          <p style="margin:0">One factor behind the split is whether a company builds its own chip-making capacity or rents it from someone else. NVDA has been among the margin leaders for most of the period shown. INTC has occupied the bottom tier throughout the AI buildout, margin stuck well below its old levels even as its own spending has eased. But this isn’t just an INTC story — across the group, periods of heavier factory spending tended to coincide with a wider margin gap. The relationship is hard to ignore.</p>
+          <p style="margin:0">MU's earnings later today, against a recent chip selloff, could show whether AI-driven memory scarcity is strong enough to narrow a gap that’s persisted across the group.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">In the AI era, the economics have favored renters over owners.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 1188;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-22.webp" width="1200" height="1188" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p23" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">27</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Keep it real? Fo sho.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">As charted below, a rolling analysis of 10-year real yields and sector betas since 2012 shows real estate negative in every rolling window since XLRE's launch, and utilities negative in ~90% of windows over the full sample. Both fit the textbook story: long-duration cash flows and discount-rate sensitivity.</p>
+          <p style="margin:0">The more revealing result is what breaks the pattern. Tech and discretionary, often filed under "rate sensitive" by default, spend 40-46% of rolling windows on the opposite side of zero. That's a remarkably unstable relationship for sectors so often discussed as rate trades. It suggests that growth expectations, earnings narratives, and broader risk sentiment frequently matter as much as—or more than—real rates themselves.</p>
+          <p style="margin:0">With real yields still near the highest levels of the post-GFC era, that distinction matters. Not every tech selloff is a rate story, even when the narrative says it is.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1180 / 673;border:1px solid var(--color-divider);background:#fff"><img src="charts/real_rate_beta_chart.webp" width="1180" height="673" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p24" data-topics="macro consumer" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">28</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation &nbsp;·&nbsp; Consumer</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Rate cuts were supposed to revive housing. So why hasn’t it shown up?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Mortgage rates have fallen meaningfully since late 2023. Builders have piled on incentives. By the old playbook, new home sales should be climbing, yet they're not.</p>
+          <p style="margin:0">As I've charted below, a rolling regression against mortgage rates, inventory, and real disposable income suggests a possible reason: mortgage rates aren’t explaining much of new home sales anymore.</p>
+          <p style="margin:0">→ Rates' explanatory power has been fading for months</p>
+          <p style="margin:0">→ By this spring, it was explaining very little of the variation in new home sales</p>
+          <p style="margin:0">→ The result directionally held up across multiple specifications</p>
+          <p style="margin:0">One possible explanation: builder rate buydowns may have partially disconnected the posted 30-year mortgage rate from the rate many buyers actually pay. If the “real” financing rate isn’t the one in the headlines, it would help explain why the headline rate has become a weaker predictor of behavior.</p>
+          <p style="margin:0">That leaves the bigger question: if rates are explaining less of the market, what is?</p>
+          <p style="margin:0">Inventory explained more of the variation than any other factor for much of this cycle, but that relationship has weakened, too. Real income has picked up recently, though not consistently enough to declare it the new driver.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The lever that moved housing for a generation may be losing its grip — and figuring out what replaces it may be the more interesting story from here.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1180 / 673;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-24.webp" width="1180" height="673" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p25" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">29</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Wishy-warshy? That's not what that was.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">The rate held today, as expected, but the real story sat in the dots.</p>
+          <p style="margin:0">As I've charted below, the median had gone nowhere across two straight meetings — 3.4% in December, 3.4% in March. Today it moved to 3.8%, the largest upward revision since at least September 2025. Nine of 18 officials now see the rate finishing the year above the current target range, just short of a majority. The median projection itself now sits above it. One dot was missing entirely: Warsh's, by his own admission, consistent with his long-standing skepticism of the SEP.</p>
+          <p style="margin:0">By April, hike odds were already climbing in the futures market. Brent crude had risen above $100/bbl after the Middle East conflict disrupted global supply. Much of the hawkish repricing predated today’s meeting. The timing with Warsh’s first meeting as chair is notable, but it isn’t proof of cause.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The Fed didn't move rates.. it moved the conversation.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1600 / 822;border:1px solid var(--color-divider);background:#fff"><img src="charts/dots_all_folks_final.webp" width="1600" height="822" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p26" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">30</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">What happens to equity valuations when the force that suppressed borrowing costs for 15 years starts to fade?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">As I've charted below, before QE, there was a tight relationship between government borrowing and the yield premium investors demanded to hold long-term bonds. Borrow more, pay more. It held for nearly five decades before the Fed absorbed duration at scale and materially disrupted it.</p>
+          <p style="margin:0">That distortion may be fading. The deficit has been running above 5% of GDP outside a recession — something particularly rare in the postwar era. Meanwhile, term premium has risen from -0.58% in 2022 to +0.67% today.</p>
+          <p style="margin:0">The pre-QE relationship implies ~3.6% at current deficit levels — a gap of about 300bps.</p>
+          <p style="margin:0">The CBO's deficit path doesn't improve from here; it widens. Every year it persists, the case for normalization strengthens.</p>
+          <p style="margin:0">The S&amp;P 500 trades around ~22x forward earnings. Under standard DDM assumptions, a full reversion toward pre-QE implied term premium would compress that multiple materially. Even a partial move gets uncomfortable.</p>
+          <p style="margin:0">The question isn’t whether deficits matter. It’s whether markets are priced as though they don’t.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1600 / 829;border:1px solid var(--color-divider);background:#fff"><img src="charts/quantitative-teasing-chart.webp" width="1600" height="829" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+        <div style="width:100%;max-width:1120px;aspect-ratio:1600 / 805;border:1px solid var(--color-divider);background:#fff"><img src="charts/served-its-term-chart.webp" width="1600" height="805" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p27" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">31</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Haul clear?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Not yet. 🚚 Markets interpreted May's core goods CPI print — down for the first time in 14 months — as evidence that goods inflation is fading. The freight data suggests caution.</p>
+          <p style="margin:0">Historically, truckload spot rates have tended to turn ahead of core goods inflation. My chart below shows it twice: Freight surged ahead of goods inflation in 2020, then collapsed ahead of goods disinflation in 2022. Same movie, different scene.</p>
+          <p style="margin:0">Spot rates are up ~43% YoY as of early June, while core goods CPI sits near flat MoM. The freight signal didn't disappear — it got obscured. If the historical lag holds, the impact shows up in 2H26.</p>
+          <p style="margin:0">Then there's a second channel: Diesel prices have risen sharply since the US-Iran conflict escalated, increasing transportation costs before any lagged CPI impact appears.</p>
+          <p style="margin:0">For asset-based carriers (ODFL, WERN, KNX, FDXF), that's potentially constructive. Higher fuel costs pressure marginal operators, accelerate capacity exits, and tighten supply into an already recovering rate environment.</p>
+          <p style="margin:0">The dynamic is less favorable for freight-intensive retailers. Names like DLTR, DG, GPS, and AEO could potentially face margin pressure if transportation costs continue moving higher.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The risk of goods reacceleration may be delayed rather than gone. And if goods inflation re-emerges while services remain sticky, the Fed's path into year-end gets narrower.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1600 / 859;border:1px solid var(--color-divider);background:#fff"><img src="charts/weight_for_it_final.webp" width="1600" height="859" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p28" data-topics="macro consumer" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">32</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation &nbsp;·&nbsp; Consumer</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">The pass-through passed through.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🧵 May CPI: Headline +4.2% YoY (+0.5% MoM, in line). Core +2.9% YoY (+0.2% MoM, vs. +0.3% consensus). Energy drove over 60% of the monthly gain — an Iran-driven oil shock, not a tariff story. Goods? Quiet.</p>
+          <p style="margin:0">As charted below, I ran a structural break test across three tariff-exposed CPI categories from January 2023 through May 2026. The results don’t just show where pass-through landed — they show where it never arrived.</p>
+          <p style="margin:0">New vehicles: No detectable shift. The mean monthly price change moved by two hundredths of a %. Whatever tariff cost hit the auto supply chain, it left little detectable imprint on retail vehicle prices.</p>
+          <p style="margin:0">Apparel: A clear break. Monthly gains averaged near-zero pre-tariff, jumped to +0.44% after. That’s real, but it’s also fading. February peaked at +1.3% MoM. May came in at +0.3%. Wholesale apparel prices are off their November 2025 peak and trending lower.</p>
+          <p style="margin:0">Household furnishings looked like a pass-through story through April. May’s -0.6% MoM decline weakened the case considerably. Any pricing pressure dissipated faster than expected.</p>
+          <p style="margin:0">The pattern: Pass-through concentrated in apparel, absent in durables, and now reversing in furnishings. Core +0.2% in May is the cleanest read — it’s difficult to square that number with a broad-based reacceleration narrative.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The tariff story wasn’t wrong — it was just too broad. Zoom in and the picture gets more useful.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 603;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-28.webp" width="1200" height="603" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p29" data-topics="earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">33</span><span>June 2026</span><span style="color:#b5aea4">Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">The managed care recovery trade has a deductible of about nine months.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🏥 Running a cross-correlation analysis on UNH, ELV, CNC, and HUM using five years of quarterly MCR data, it appears rising medical costs do leave a predictable footprint in stock returns, just not in an obvious spot.</p>
+          <p style="margin:0">As I've charted below, the strongest signal in the data sits around three quarters after a meaningful cost spike — the stocks show a significant negative relationship with prior MCR increases. The drag doesn’t clear when the worst print lands. It lingers.</p>
+          <p style="margin:0">There’s also something interesting on the other side: In the year leading into a cost spike, these stocks tend to run well.. the market goes in optimistic. That finding holds in the cleaner subset of the data, so I’d call it directional, not definitive.</p>
+          <p style="margin:0">Put the two together and the picture is fairly consistent. The setup happens before the deterioration, and the pain extends well past it. Buying at the apparent cost peak may mean stepping in front of a few more negative Qs.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 649;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-29.webp" width="1200" height="649" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p30" data-topics="labor" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">34</span><span>June 2026</span><span style="color:#b5aea4">Labor Market</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Hire than we thought..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">👀 May NFP: +172K vs. +85K consensus. Unemployment: 4.3%. AHE: +3.4% YoY. And the revisions tell their own story — March and April were revised up a combined 93K, suggesting the labor market isn't as fragile as the original prints implied.</p>
+          <p style="margin:0">But it's the wage line that deserves a closer look (see my chart below).</p>
+          <p style="margin:0">AHE is sensitive to where the hiring happens — when low-wage sectors lead, the aggregate gets pulled down even if wages within each sector are running hotter. This month, that effect is essentially flat. Leisure and hospitality added 70K jobs — 5x its 12-month average — but wage growth in that sector ran nearly +4% YoY, roughly in line with the headline. The composition story closed itself.</p>
+          <p style="margin:0">That leaves the ECI as the cleanest read, which controls for composition by design and happens to be what the Fed truly watches.</p>
+          <p style="margin:0">ECI at +3.4%, headline AHE at +3.4%, mix-adjusted at +3.5%. Three measures, one message — wages are cooling and the composition noise has cleared for now.</p>
+          <p style="margin:0">Markets aren't fully at ease though, as September hike probability ticked up to ~37% post-print — a reminder that with inflation still sticky, the next move clearly isn't a cut.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The collective wage gauges are finally in a preferred zone. The question now isn't whether wages are under control.. it's whether the Fed moves before the data forces their hand.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 627;border:1px solid var(--color-divider);background:#fff"><img src="charts/li-30.webp" width="1200" height="627" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p31" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">35</span><span>June 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Manufacturing demand looked a lot worse last spring.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Inventories piling up, orders falling. Classic demand destruction — except it wasn't.</p>
+          <p style="margin:0">Companies were frontloading inventory ahead of tariffs, while pulling back orders simultaneously. The spread between new orders and inventories went deeply negative for the wrong reasons (charted below).</p>
+          <p style="margin:0">Six months into 2026 that spread has turned firmly positive and held.. through tariff uncertainty, through the energy crisis, all of it. Prices paid has surged back to levels not seen since March 2022, too. Tariffs and geopolitical instability explain most of that, which is fair.</p>
+          <p style="margin:0">What it doesn't explain is a demand signal this consistent. Cost-push plus a genuine demand recovery is a harder problem than cost-push alone. The Fed can wait out a supply shock. It's less clear it can wait this out.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1180 / 674;border:1px solid var(--color-divider);background:#fff"><img src="charts/no_inv_pp_linkedin-priced-to--order.webp" width="1180" height="674" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p32" data-topics="earnings" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">36</span><span>June 2026</span><span style="color:#b5aea4">Earnings</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Net gains, gross concerns.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">S&amp;P 500 net profit margins reached 14.8% in 1Q26 — the highest since FactSet began tracking in 2009, and 250 bps above the 5-year average of 12.3%.</p>
+          <p style="margin:0">The expansion was real over that time frame, but a significant part traces to structural tailwinds built up during it: Tax reform, years of falling rates, globalized supply chains, and a compositional shift toward high-margin tech. Few of those tailwinds remain intact heading into the next two years.</p>
+          <p style="margin:0">As I've charted below, running a Du Pont-based scenario analysis puts the margin base case — modest tax drift, elevated interest expense as corporate debt rolls at higher rates, modest EBIT compression — around 13.2% by 2028. The bear case lands near 11.8%, below the 5-year average, without requiring a recession.</p>
+          <p style="margin:0">One wildcard: AI productivity could extend the bull case. But the investment cycle precedes the payoff, and that cost is flowing through income statements now across far more companies than those monetizing it.</p>
+          <p style="margin:0">No call here. Just worth having a view.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:687px;aspect-ratio:1030 / 1350;border:1px solid var(--color-divider);background:#fff"><img src="charts/margin_peak_chart.webp" width="1030" height="1350" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p33" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">37</span><span>May 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">The goods get good again.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">📦 April PCE: Headline +3.8% YoY (in-line), core +3.3% YoY (in-line), core MoM +0.2% — one tenth beat. Orderly on the surface.. underneath it, a structural inflection.</p>
+          <p style="margin:0">As I've charted below, goods prices have eclipsed services inflation for two straight months — spread at 71 bps and widening — the first such streak since December 2022. That dynamic last held during the 2021–2022 supply shock. When it ended in December 2022, services became the sticky residual and the Fed traded off that story.</p>
+          <p style="margin:0">April 2 tariff pass-through and the Iran energy shock are the likely drivers here. The policy trap: Rate hikes work on demand-sensitive services inflation but against tariff-driven goods repricing, they're a blunt instrument at best. The Fed can't hike its way out of a supply-side shock — and can't cut with core at 3.3%.</p>
+          <p style="margin:0">The consumer is absorbing it on fumes, too. Saving rate: 2.6% in April, the lowest since June 2022. Real DPI has fallen for three consecutive months. The first 2022 drawdown had excess savings as a cushion.. this one doesn't.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">In-line headline, structural inflection underneath. The goods/services spread is back in positive territory — a dynamic last seen during the supply-shock era. Rate policy can't fix it. Watch the spread.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1079px;aspect-ratio:1600 / 1335;border:1px solid var(--color-divider);background:#fff"><img src="charts/pce_chart_final_2.webp" width="1600" height="1335" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p34" data-topics="labor" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">38</span><span>May 2026</span><span style="color:#b5aea4">Labor Market</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">At 4.3%, headline unemployment looks okay... until you break it down by state.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">As I've charted below, Y/Y unemployment changes across states are spread ~0.3 ppt apart on average — above the 2019 late-expansion baseline of 0.24 ppt, and well below the 0.67 ppt from early 2008. Slowdown territory, not recession. But the divergence is real, and it's uneven. CT is the sharpest outlier, nearly 3 standard deviations above the average state's rate of change, with Y/Y unemployment up 1.2 pts to 5.0%, driven partly by 12K workers leaving the labor force entirely. FL's more than 2.5 standard deviations above, up 1.1 pts Y/Y, with the jobless rate running above prior-year levels for eight consecutive months. Two separate shocks — federal job cuts and cyclical softening in construction and financial activities — hitting at once, which tends to extend the recovery timeline.</p>
+          <p style="margin:0">Across credit cycles, unemployment has historically led bank credit quality by ~4 quarters (see below). Seacoast (SBCF), the most FL-concentrated regional, is the name to monitor as the picture develops.</p>
+          <p style="margin:0">Worth asking whether regional bank estimates in these geographies have fully absorbed what the labor market data is showing.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1600 / 1233;border:1px solid var(--color-divider);background:#fff"><img src="charts/state_unemp_square.webp" width="1600" height="1233" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p35" data-topics="energy macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">39</span><span>May 2026</span><span style="color:#b5aea4">Energy &nbsp;·&nbsp; Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Fuel for thought..</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">⛽ Heading into Memorial Day weekend, the national average gas price is $4.56/gal. But the number itself isn't the story, the velocity of its rise is.</p>
+          <p style="margin:0">As I’ve charted below, the move from $3.18 last Memorial Day to $4.56 today is one of the two largest one-year jumps, when measured by z-scores, in a decade of Memorial Day pump prices — statistically comparable to the Russia-Ukraine spike of 2022. The difference: That shock built over months. This one arrived in a single quarter.</p>
+          <p style="margin:0">Two regimes stand out across 10 years of data, both driven by a single geopolitical supply disruption. Everything in between was gravitating back toward average.</p>
+          <p style="margin:0">This isn't a seasonal story but a structural repricing story. What makes it unusual? The downside is also constrained. Sub-$3 gas is off the table for a year or more even if Hormuz reopens tomorrow, per GasBuddy's modeling. The floor has moved — and it doesn't appear it's moving back quickly.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1600 / 1229;border:1px solid var(--color-divider);background:#fff"><img src="charts/strait_to_the_pump.webp" width="1600" height="1229" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p36" data-topics="macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">40</span><span>May 2026</span><span style="color:#b5aea4">Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">No dove, no love.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">🕊️ Following yesterday's FOMC minutes, I parsed 35 statement releases (charted below) going back to January 2022 and found: Tariff sentence count in April's minutes was 9, well below the post-tariff shock average of 24.5. When plotting tariff volume against structural framing — how persistent the Fed thinks tariff inflation is — as z-scores, the divergence hit its widest reading of the post-shock era. In essence, fewer words, harder view (more of those words signaling persistence, not a fade).</p>
+          <p style="margin:0">That pattern has precedent. The two prior meetings with comparably wide divergences — January 2022 and December 2022 — were both followed by rate hikes within two meetings. Small sample, different context. But directionally consistent.</p>
+          <p style="margin:0">Lastly, energy sentences in April's minutes outnumbered tariff sentences 2.7 to 1. The committee has pulled back on tariffs. That's usually when the conclusion — persistent, not transitory — has already been reached.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1154 / 625;border:1px solid var(--color-divider);background:#fff"><img src="charts/fomc_chart.webp" width="1154" height="625" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p37" data-topics="capex" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">41</span><span>May 2026</span><span style="color:#b5aea4">Capex / AI</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Gotta let it burn (cue Usher song).</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">META, MSFT, GOOGL, AMZN spent roughly the same on buybacks as capex in 2022. That's no longer the case, though — capex overtook buybacks that same year and has pulled further away every year since (I've charted below).</p>
+          <p style="margin:0">Combined capex among those four hit ~$366B in 2025 against ~$200B in FCF, with the gap projected to reach ~$675B in 2026 as guided spending approaches $710B. Buybacks, once neck and neck with infrastructure spend, are now less than a quarter of the capex bill.</p>
+          <p style="margin:0">The bull case has real substance: AI revenue is scaling, customers are committing to long-term cloud contracts at an accelerating pace, and these are among the strongest balance sheets in corporate history absorbing a tremendous infrastructure bet.</p>
+          <p style="margin:0">But capex as a share of revenue has tripled since 2022, crossing 20% — a level historically associated with capital-intensive infrastructure and hardware businesses, not the asset-light platform model these companies were built on and some still valued on. The current multiple hinges on FCF recovering as AI revenue scales, and the timeline on that feels less certain than valuations currently imply. Eventually, one of those two things forces the question.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:1120px;aspect-ratio:1200 / 628;border:1px solid var(--color-divider);background:#fff"><img src="charts/cash_burn_final.webp" width="1200" height="628" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p38" data-topics="consumer energy" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">42</span><span>May 2026</span><span style="color:#b5aea4">Consumer &nbsp;·&nbsp; Energy</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Window dressing?</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">April retail sales: +0.5% MoM, roughly in line with consensus. Control group: +0.5%, (vs. 0.4% estimate). Gasoline stations: +2.8%, down sharply from March's +13.7%. That gap tells a different story.</p>
+          <p style="margin:0">Across 34 years of gas price data, I ran an event study on the four major geopolitical shock episodes — Katrina, '08 oil crisis, Arab Spring, Russia-Ukraine (charted below).</p>
+          <p style="margin:0">The pattern holds in three of the four episodes: Consumers absorb the shock and real retail recovers above baseline within 2–3 months. The exception is '08, but that episode was overwhelmed by the financial crisis hitting simultaneously, not the gas spike itself. The control group beat today is directionally consistent with the three episodes where the consumer held.</p>
+          <p style="margin:0">One number that makes this cycle harder to dismiss? Monthly gas cost as a share of average weekly earnings is rising fast. Still beneath the '08 and '22 peaks, but the gap is gradually tightening.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The consumer is 3-for-3 against pure gas shocks. April's control group beat keeps that streak alive, but the discretionary cracks are already visible in the composition. History is in the bull's corner — the mix is not.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 748;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-1a.webp" width="1200" height="748" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 689;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-1b.webp" width="1200" height="689" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p39" data-topics="macro consumer" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">43</span><span>May 2026</span><span style="color:#b5aea4">Macro &amp; Inflation &nbsp;·&nbsp; Consumer</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Aisle just leave this here.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">April CPI: +3.8% YoY (vs. +3.7% expected). Energy mostly carried the headline again, but food at home rose +0.7% MoM, the biggest single-month move since the height of the 2022 inflation surge.</p>
+          <p style="margin:0">That +0.7% food print is worth paying attention to. Here's why: A major Qatari fertilizer facility — QAFCO — went offline in early March after Iranian strikes disrupted its gas supply. It produces ~14% of global urea, one of the most widely used crop fertilizers in the world. Prices have surged ~81% since February.</p>
+          <p style="margin:0">That cost increase is now sitting inside the input structure of crops being planted this spring — and it hasn't shown up in grocery prices yet. Historical energy-to-food transmission lags about 5–6 months from the shock. So, put another way, the real food CPI inflection likely hits August–September, well after most are expecting the inflation picture to soften.</p>
+          <p style="margin:0">On equities, there's a clean distinction worth making. Domestic nitrogen producers — insulated from Hormuz on the input side — stand to benefit directly from the global price surge. Airlines are the opposite — fares up +20.7% YoY, or +2.8% MoM, absorbing their own fuel-driven inflation without the stock upside.</p>
+          <p style="margin:0">As for the Fed: Core at +2.8% YoY, or +0.4% MoM (ahem, rents), and moving the wrong way makes 2026 cuts essentially a closed conversation. If anything, at current check it looks like 2H rate hike prospects inched up this morning.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The headline was hot, but the food lag makes it spicy.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 646;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-2a.webp" width="1200" height="646" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p40" data-topics="capex" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">44</span><span>May 2026</span><span style="color:#b5aea4">Capex / AI</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">All yield, no field.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">The S&amp;P 500 is effectively two economies stitched together, and the seam is widening.</p>
+          <p style="margin:0">Applying the Herfindahl-Hirschman Index to estimated S&amp;P 500 capex by sector, concentration has crossed well above the 2,500 "highly concentrated" threshold used in antitrust analysis — and is still climbing. Tech and AI drive an estimated 85% of that score in 2026E, up from ~24% in 2000 and ~23% a decade ago. The sharpest move came in a single year: 2023 to 2024.</p>
+          <p style="margin:0">Strip out the hyperscalers and non-AI corporate capex is running in the low single digits — energy, industrials, consumer sector weights in structural decline for a decade, per consensus.</p>
+          <p style="margin:0">The macro narrative is expansion, the HHI narrative is concentration, and the sectors losing ground are priced for a cycle even as the data hints at something longer.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 616;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-3a.webp" width="1200" height="616" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 677;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-3b.webp" width="1200" height="677" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p41" data-topics="labor" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">45</span><span>May 2026</span><span style="color:#b5aea4">Labor Market</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Feel the beat.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">April NFP: +115K. Consensus was +60K. A beat — but, as always, the internals tell a nuanced story. A few things worth holding onto:</p>
+          <p style="margin:0">Revisions: February revised down to −156K. March up to +185K. Net −16K combined. The 8:30 headline rarely sticks.</p>
+          <p style="margin:0">AHE: +3.6% YoY, +0.2% MoM. 3-month annualized ~+3.2% — wages cooling on the short-run basis.</p>
+          <p style="margin:0">Federal government shed another 9K, now down 348K from its October 2024 peak.</p>
+          <p style="margin:0">Today's print doesn't stand alone. Jobless claims are around a cycle low at 200K, while ISM manufacturing employment (46.4) and services employment (48.0) are both still in contraction (services up from 45.2 in March but still remains sub-50).</p>
+          <p style="margin:0">One number that warrants some attention: U-6 rose to 8.2% while U-3 held flat at 4.3% — the spread is at its widest since late 2024. U-6 captures underemployment and involuntary part-time work, which jumped +445K to 4.9M in April. When U-3 is flat but U-6 is rising, people are finding work — just not the work they want.</p>
+          <p style="margin:0">On the Fed: Rates on hold and the market still isn't pricing any cuts this year. Nothing in today's report changes that. Kevin Warsh on May 15.</p>
+        </div>
+        <div style="margin-top:var(--space-4);padding:var(--space-4);border-left:3px solid var(--color-accent);background:var(--color-accent-900)">
+          <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--color-accent);margin-bottom:var(--space-2)">Net Net</span>
+          <p style="margin:0;font-size:14px;line-height:1.6">The headline clears the bar. The composition suggests the bar is getting lower.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 659;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-4a.webp" width="1200" height="659" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p42" data-topics="earnings consumer" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">46</span><span>May 2026</span><span style="color:#b5aea4">Earnings &nbsp;·&nbsp; Consumer</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">Q1 earnings have been a reminder that "good" doesn't always move the needle.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">The S&amp;P 500's average beat-day reaction has barely been positive, while misses still draw blood. The consumer sector's penalty is worse — even strong prints are met with selling.</p>
+          <p style="margin:0">Underneath the market reaction is the same ongoing consumer structural split. Premium cabins, steakhouses, and warehouse clubs continue to shine, while pizza chains and mid-tier retailers lose steam. The top end is still aspirational; the middle is defensive.</p>
+          <p style="margin:0">Sentiment data reinforces the divide. "Cautious consumer" mentions on earnings calls have surged, and confidence readings sit near multi-decade lows. Yet spending still hasn't collapsed — it's just selective. Experiences over essentials. Premium over practical. Intent over impulse.</p>
+          <p style="margin:0">It's a strange paradox: the economy is okay, the consumer is active, but confidence is cracked. The divergence is obvious, but the fatigue is louder.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 764;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-5a.webp" width="1200" height="764" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+    <article id="p43" data-topics="smallcap macro" style="display:flex;flex-direction:column;gap:var(--space-6);align-items:start;padding:var(--space-8) 0;border-top:1px solid var(--color-divider);scroll-margin-top:70px;content-visibility:auto;contain-intrinsic-size:auto 1400px">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:var(--space-3);margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#8a8279"><span style="color:var(--color-accent-300)">47</span><span>May 2026</span><span style="color:#b5aea4">Small &amp; Mid Cap &nbsp;·&nbsp; Macro &amp; Inflation</span></div>
+        <h2 style="margin:0 0 var(--space-4);font-size:37px;font-weight:400;letter-spacing:-0.012em;line-height:1.18">The small cap trade is working, but the balance sheet hasn't changed.</h2>
+        <div style="font-size:15px;line-height:1.75;color:#333;display:flex;flex-direction:column;gap:var(--space-3);text-wrap:pretty;max-width:74ch">
+          <p style="margin:0">Russell 2000 is up ~12% YTD, outpacing the S&amp;P 500 by a modest margin. The domestic revenue tilt is doing a lot of work. With multinationals absorbing geopolitical headwinds and a weaker USD, small caps are the relative safe haven.. for now.</p>
+          <p style="margin:0">However, it's worth noting that the AI capex cycle continues to disproportionately benefit large/mega caps, and small caps have minimal exposure to that earnings driver.</p>
+          <p style="margin:0">Moreover, about 32% of R2K debt is floating rate vs. about 6% for the S&amp;P 500. The Fed has held for three straight meetings, with the market pricing in virtually no cuts through year end. And small caps are still staring down a $368B debt maturity wall in 2026 — refinancing at rates near 6.5% vs. the 1–2% many locked in a few years ago.</p>
+          <p style="margin:0">~41% of R2K constituents are "zombie" companies — EBIT can't cover interest expenses. That figure doesn't improve just because the index is outperforming.</p>
+          <p style="margin:0">The regression going back to 1994 shows the directional relationship — higher rates, tougher sledding for small caps relative to large — even if it's not the only factor at play. If the Fed resumes easing, the floating rate burden lightens up but it doesn't offset the other dynamics.</p>
+          <p style="margin:0">Good time to be in small caps. Better time to know which ones.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);width:100%;align-items:flex-start">
+        <div style="width:100%;max-width:900px;aspect-ratio:1200 / 726;border:1px solid var(--color-divider);background:#fff"><img src="charts/chart-6a.webp" width="1200" height="726" loading="lazy" decoding="async" alt="Chart" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer style="background:var(--color-ink);color:#f7f4ef;margin-top:var(--space-8);padding:var(--space-8) max(var(--space-6), calc((100% - 1180px) / 2 + var(--space-6)));display:grid;grid-template-columns:2fr 1fr;gap:var(--space-8);align-items:start">
+    <div>
+      <h3 style="margin:0 0 var(--space-3);font-size:32px;font-weight:700;letter-spacing:-0.02em;color:#f7f4ef">Tyler Davis, MBA</h3>
+      <p style="margin:0;max-width:520px;font-size:13px;line-height:1.7;color:#aaaaaa;text-wrap:pretty">Equity Research Product Management professional with a background spanning morning research call leadership, Institutional Investor/Extel strategy, ECM and corporate access coordination. Series 86, 87, 63, SIE licensed. Writing weekly market commentary with a focus on differentiated, data-driven analysis.</p>
+      <div style="margin-top:var(--space-4);display:flex;gap:var(--space-3)">
+        <a href="https://www.linkedin.com/in/tylerdavis2" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FFB300;border-bottom:1px solid rgba(255,179,0,0.3);padding-bottom:2px">LinkedIn</a>
+        <a href="mailto:tdavis4130@gmail.com" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#FFB300;border-bottom:1px solid rgba(255,179,0,0.3);padding-bottom:2px">tdavis4130@gmail.com</a>
+      </div>
+    </div>
+    <div>
+      <p style="margin:0 0 var(--space-3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#5a5a5a">Areas of Coverage</p>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <li style="font-size:12px;padding:var(--space-2) 0;border-bottom:1px solid #1f1f1f;color:#999999">Macro &amp; Inflation</li>
+        <li style="font-size:12px;padding:var(--space-2) 0;border-bottom:1px solid #1f1f1f;color:#999999">Consumer Sector</li>
+        <li style="font-size:12px;padding:var(--space-2) 0;border-bottom:1px solid #1f1f1f;color:#999999">Labor Market</li>
+        <li style="font-size:12px;padding:var(--space-2) 0;border-bottom:1px solid #1f1f1f;color:#999999">Capital Expenditure</li>
+        <li style="font-size:12px;padding:var(--space-2) 0;border-bottom:1px solid #1f1f1f;color:#999999">Earnings Analysis</li>
+        <li style="font-size:12px;padding:var(--space-2) 0;color:#999999">Small &amp; Mid Cap</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div style="background:var(--color-ink);padding:var(--space-4) max(var(--space-6), calc((100% - 1180px) / 2 + var(--space-6))) var(--space-8);display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-family:'IBM Plex Mono',monospace">
+    <p style="margin:0;font-size:9.5px;line-height:1.7;color:#4a4a4a;max-width:640px;border-top:1px solid #1f1f1f;padding-top:var(--space-4)">Not investment advice. All views are personal and do not represent those of any employer, past or present. Data sourced from public filings, BLS, Federal Reserve, and publicly available research.</p>
+    <p style="margin:0;font-size:10px;color:#4a4a4a;border-top:1px solid #1f1f1f;padding-top:var(--space-4)">© 2026 Tyler Davis · Market Commentary</p>
+  </div>
+
+</div>
+</body>
+</html>

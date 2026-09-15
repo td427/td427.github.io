@@ -1,0 +1,71 @@
+/* Mobile overrides. These must use !important — the design's layout values are
+   authored as inline styles, which otherwise win over any stylesheet rule. */
+
+@media (max-width: 700px) {
+  body { overflow-x: hidden; }
+
+  /* Masthead: the 1fr/auto grid gave the licences line its own column, squeezing
+     the name and blurb to ~half the screen. Stack it instead. */
+  #top {
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+    padding-top: var(--space-6) !important;
+    padding-bottom: var(--space-6) !important;
+  }
+  #top h1 { font-size: clamp(38px, 13vw, 60px) !important; }
+  #top > div:last-child { text-align: left !important; }
+  /* the blurb only — not the 10px kicker above the name */
+  #top > div:first-child > p:last-child { font-size: 15px !important; max-width: none !important; }
+
+  /* Sticky bar: the chip row was getting squeezed to nothing between
+     the two fixed-width buttons. Give it its own full-width line. */
+  #filterbar {
+    padding: var(--space-3) var(--space-4) !important;
+    flex-wrap: wrap !important;
+    gap: var(--space-2) !important;
+  }
+  #filterbar .chiprow {
+    order: 3;
+    flex-basis: 100% !important;
+    margin-left: calc(var(--space-4) * -1);
+    margin-right: calc(var(--space-4) * -1);
+    padding: 2px var(--space-4) 0 !important;
+  }
+  #filterbar > a { margin-right: auto; min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* 44px minimum tap targets — chips are the primary nav on phones and sit in a
+     horizontal scroller, so a 27px target invites scroll-instead-of-tap. */
+  #filterbar [data-filter],
+  #filterbar #indextoggle {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Index: two columns instead of three — date and title stack in the right column */
+  #index { padding-left: var(--space-4) !important; padding-right: var(--space-4) !important; }
+  #index a { grid-template-columns: 24px 1fr !important; gap: var(--space-2) !important; }
+  #index a > span:nth-child(2),
+  #index a > span:nth-child(3) { grid-column: 2 !important; }
+  #index a > span:nth-child(3) { font-size: 13.5px !important; }
+
+  /* Posts */
+  #posts { padding-left: var(--space-4) !important; padding-right: var(--space-4) !important; }
+  /* Jump offset must clear the taller two-row mobile bar (~123px); the inline
+     70px was authored for the 52px desktop bar. */
+  #posts article { padding-top: var(--space-6) !important; padding-bottom: var(--space-6) !important; scroll-margin-top: 136px !important; }
+  #posts h2 { font-size: 26px !important; line-height: 1.24 !important; }
+  #posts article > div > div:first-child { flex-wrap: wrap !important; gap: var(--space-2) !important; }
+
+  footer { padding-left: var(--space-4) !important; padding-right: var(--space-4) !important; }
+  footer > div { flex-direction: column !important; align-items: flex-start !important; gap: var(--space-3) !important; }
+}
+
+@media (max-width: 420px) {
+  #posts h2 { font-size: 23px !important; }
+  #index a > span:nth-child(3) { font-size: 13px !important; }
+}
